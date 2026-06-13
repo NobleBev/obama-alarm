@@ -172,20 +172,31 @@
   }
   .gap { height: 30px; }
 
-  details {
+  summary { cursor: pointer; -webkit-tap-highlight-color: transparent; list-style: none; }
+  summary::-webkit-details-marker { display: none; }
+  .setup > summary {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+  .setup > summary::after { content: " ▸"; }
+  .setup[open] > summary::after { content: " ▾"; }
+  .setup[open] > summary { margin-bottom: 14px; }
+  .sub {
     margin-top: 4px;
     border-top: 1px solid var(--hairline);
     padding-top: 16px;
   }
-  summary {
+  .sub > summary {
     font-family: "IBM Plex Mono", monospace;
     font-size: 12px;
     letter-spacing: 0.06em;
     color: rgba(244, 239, 228, 0.6);
-    cursor: pointer;
-    -webkit-tap-highlight-color: transparent;
   }
-  details ol { margin-top: 16px; }
+  .sub ol { margin-top: 16px; }
 
   .signup-line {
     font-size: 16px;
@@ -194,13 +205,6 @@
     margin-bottom: 16px;
   }
   .signup-embed { min-height: 56px; margin: -36px 0 -48px; }
-  .signup-hint {
-    font-family: "IBM Plex Mono", monospace;
-    font-size: 11px;
-    letter-spacing: 0.04em;
-    color: rgba(244, 239, 228, 0.45);
-    margin-top: 10px;
-  }
 
   footer {
     margin-top: 44px;
@@ -244,39 +248,42 @@
   <hr class="rule">
 
   <section>
-    <p class="step-label">iPhone Setup</p>
-    <ol>
-      <li>Tap Download above, then tap Share and pick <strong>"Save to Files."</strong></li>
-      <li>Open the Files app, touch and hold the file → Share → View More → <strong>"Use as Ringtone."</strong></li>
-      <li>Clock app → your alarm → Sound → it's at the top → Save.</li>
-    </ol>
-    <details>
-      <summary>iPhone on iOS 25 or older? Tap here</summary>
+    <details class="setup" id="setupIos">
+      <summary>iPhone Setup</summary>
       <ol>
-        <li>Save the file to Files, and get the free GarageBand app.</li>
-        <li>Press and hold the GarageBand icon on your Home Screen → "Create New Audio Recording."</li>
-        <li>Tap the Tracks button (top), then the loop icon (top right) → Files → find your file.</li>
-        <li>Touch and hold it, drag it all the way left onto the track.</li>
-        <li>Tap the triangle (top left) → My Songs. Touch and hold the song → Share → Ringtone → Export.</li>
-        <li>Clock app → your alarm → Sound → pick it → Save.</li>
+        <li>Tap Download above, then tap Share and pick <strong>"Save to Files."</strong></li>
+        <li>Open the Files app, touch and hold the file → Share → View More → <strong>"Use as Ringtone."</strong></li>
+        <li>Clock app → your alarm → Sound → it's at the top → Save.</li>
       </ol>
+      <details class="sub">
+        <summary>iPhone on iOS 25 or older? Tap here</summary>
+        <ol>
+          <li>Save the file to Files, and get the free GarageBand app.</li>
+          <li>Press and hold the GarageBand icon on your Home Screen → "Create New Audio Recording."</li>
+          <li>Tap the Tracks button (top), then the loop icon (top right) → Files → find your file.</li>
+          <li>Touch and hold it, drag it all the way left onto the track.</li>
+          <li>Tap the triangle (top left) → My Songs. Touch and hold the song → Share → Ringtone → Export.</li>
+          <li>Clock app → your alarm → Sound → pick it → Save.</li>
+        </ol>
+      </details>
     </details>
     <div class="gap"></div>
-    <p class="step-label">Android Setup</p>
-    <ol>
-      <li>Tap Download above.</li>
-      <li>Clock app → your alarm → tap the sound → <strong>"Add new"</strong> (Google) or choose from device (Samsung).</li>
-    </ol>
+    <details class="setup" id="setupAndroid">
+      <summary>Android Setup</summary>
+      <ol>
+        <li>Tap Download above.</li>
+        <li>Clock app → your alarm → tap the sound → <strong>"Add new"</strong> (Google) or choose from device (Samsung).</li>
+      </ol>
+    </details>
   </section>
 
   <hr class="rule">
   <section>
     <p class="step-label">Live Show Alerts</p>
-    <p class="signup-line">Live shows are coming. Drop your email and you'll be the first to know.</p>
+    <p class="signup-line">If you're curious about upcoming live shows or breathwork/meditation events:</p>
     <div class="signup-embed">
       <script async src="https://subscribe-forms.beehiiv.com/v3/loader.js" data-beehiiv-form="73be95d3-6c2d-4830-b9a1-99c13d981bc6"></script>
     </div>
-    <p class="signup-hint">no spam — just show announcements.</p>
   </section>
 
   <footer>a public service announcement from <a href="https://instagram.com/heyberg">@heyberg</a></footer>
@@ -306,6 +313,7 @@
   // iOS (incl. Instagram's in-app browser) blocks downloads that aren't a user gesture,
   // and tapping the file there opens a preview instead of saving it.
   var isIOS = /iPhone|iPad|iPod/.test(navigator.userAgent);
+  var isAndroid = /Android/.test(navigator.userAgent);
   if (isIOS) {
     document.getElementById('dlHint').innerHTML = 'on iPhone: tap above, then <strong>Share → Save to Files.</strong>';
   } else {
@@ -313,6 +321,13 @@
       setTimeout(function () { document.getElementById('dl').click(); }, 800);
     });
   }
+
+  // Open only the setup steps for the visitor's platform; both on desktop.
+  var iosSetup = document.getElementById('setupIos');
+  var androidSetup = document.getElementById('setupAndroid');
+  if (isIOS) { iosSetup.open = true; }
+  else if (isAndroid) { androidSetup.open = true; }
+  else { iosSetup.open = true; androidSetup.open = true; }
 </script>
 </body>
 </html>
