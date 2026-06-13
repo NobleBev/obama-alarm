@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>The Obama Alarm — free download</title>
 <meta name="description" content="The alarm from the reel. Download it free and set it as your wake-up sound.">
-<meta name="theme-color" content="#0A1326">
+<meta name="theme-color" content="#14233E">
 <meta property="og:title" content="The Obama Alarm">
 <meta property="og:description" content="The alarm from the reel. Free download — set it as your wake-up sound.">
 <meta property="og:type" content="website">
@@ -33,7 +33,7 @@
     justify-content: center;
     padding: 36px;
   }
-  main { width: 100%; max-width: 430px; text-align: center; }
+  main { width: 100%; max-width: 430px; text-align: center; padding-top: 6vh; }
 
   h1 {
     font-size: clamp(46px, 13.5vw, 64px);
@@ -187,6 +187,50 @@
   }
   details ol { margin-top: 16px; }
 
+  .signup-line {
+    font-size: 16px;
+    line-height: 1.5;
+    color: rgba(244, 239, 228, 0.86);
+    margin-bottom: 16px;
+  }
+  .signup { display: flex; flex-direction: column; gap: 10px; }
+  .signup input {
+    width: 100%;
+    background: var(--navy-raise);
+    border: 1px solid var(--hairline);
+    border-radius: 10px;
+    padding: 14px 16px;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 14px;
+    color: var(--cream);
+    outline: none;
+  }
+  .signup input::placeholder { color: rgba(244, 239, 228, 0.4); }
+  .signup input:focus { border-color: var(--gold); }
+  .signup button {
+    width: 100%;
+    background: var(--gold);
+    color: var(--navy);
+    border: 0;
+    border-radius: 10px;
+    padding: 14px 16px;
+    font-family: "IBM Plex Mono", monospace;
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .signup button:active { background: var(--gold-deep); }
+  .signup-hint {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    color: rgba(244, 239, 228, 0.45);
+    margin-top: 10px;
+  }
+
   footer {
     margin-top: 44px;
     font-family: "IBM Plex Mono", monospace;
@@ -252,6 +296,18 @@
       <li>Tap Download above.</li>
       <li>Clock app → your alarm → tap the sound → <strong>"Add new"</strong> (Google) or choose from device (Samsung).</li>
     </ol>
+  </section>
+
+  <!-- hidden until the beehiiv form target is wired up -->
+  <hr class="rule" hidden>
+  <section hidden>
+    <p class="step-label">Live Show Alerts</p>
+    <p class="signup-line">Live shows are coming. Drop your email and you'll be the first to know.</p>
+    <form class="signup" id="signupForm" action="" method="get">
+      <input type="email" name="email" inputmode="email" autocomplete="email" placeholder="your@email.com" required aria-label="Email address">
+      <button type="submit">Sign Me Up</button>
+    </form>
+    <p class="signup-hint">no spam — just show announcements.</p>
   </section>
 
   <footer>a public service announcement from <a href="https://instagram.com/heyberg">@heyberg</a></footer>
