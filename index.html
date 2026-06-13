@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>The Obama Alarm — free download</title>
+<meta name="description" content="The alarm from the reel. Download it free and set it as your wake-up sound.">
+<meta name="theme-color" content="#0A1326">
+<meta property="og:title" content="The Obama Alarm">
+<meta property="og:description" content="The alarm from the reel. Free download — set it as your wake-up sound.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0A1326;
+    --navy-raise: #111E38;
+    --cream: #F4EFE4;
+    --gold: #C9A227;
+    --gold-deep: #A8841B;
+    --hairline: rgba(244, 239, 228, 0.14);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    background: var(--navy);
+    background-image: radial-gradient(ellipse 120% 80% at 50% -10%, #16264A 0%, var(--navy) 60%);
+    color: var(--cream);
+    font-family: "Libre Caslon Text", Georgia, serif;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    padding: 36px;
+  }
+  main { width: 100%; max-width: 430px; text-align: center; }
+
+  h1 {
+    font-size: clamp(46px, 13.5vw, 64px);
+    font-weight: 700;
+    line-height: 1.02;
+    letter-spacing: 0.01em;
+    margin: 0 0 22px;
+    text-wrap: balance;
+  }
+  .stars { display: flex; justify-content: center; gap: 10px; margin-bottom: 26px; }
+  .stars svg { width: 11px; height: 11px; fill: var(--gold); opacity: 0.9; }
+
+  .player {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: var(--navy-raise);
+    border: 1px solid var(--hairline);
+    border-radius: 14px;
+    padding: 14px 16px;
+    margin-bottom: 14px;
+    text-align: left;
+  }
+  .play-btn {
+    flex: none;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    border: 1.5px solid var(--gold);
+    background: transparent;
+    color: var(--gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .play-btn:active { background: rgba(201, 162, 39, 0.15); }
+  .play-btn svg { width: 18px; height: 18px; fill: var(--gold); }
+  .player-meta { flex: 1; min-width: 0; }
+  .player-label {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(244, 239, 228, 0.6);
+    margin-bottom: 8px;
+  }
+  .track {
+    height: 3px;
+    background: rgba(244, 239, 228, 0.16);
+    border-radius: 2px;
+    overflow: hidden;
+    margin-bottom: 8px;
+  }
+  .track-fill { height: 100%; width: 0%; background: var(--gold); border-radius: 2px; }
+  .time {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 11px;
+    color: rgba(244, 239, 228, 0.55);
+  }
+
+  .download {
+    display: block;
+    width: 100%;
+    background: var(--gold);
+    color: var(--navy);
+    text-decoration: none;
+    border-radius: 12px;
+    padding: 18px 20px 15px;
+    font-family: "IBM Plex Mono", monospace;
+    font-weight: 600;
+    font-size: 15px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    box-shadow: 0 6px 24px rgba(201, 162, 39, 0.28);
+    -webkit-tap-highlight-color: transparent;
+  }
+  .download:active { background: var(--gold-deep); }
+  .download small {
+    display: block;
+    margin-top: 5px;
+    font-size: 10.5px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    color: rgba(10, 19, 38, 0.72);
+  }
+  .dl-hint {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 11.5px;
+    line-height: 1.6;
+    color: rgba(244, 239, 228, 0.55);
+    margin: 14px 0 0;
+  }
+  .dl-hint strong { color: var(--gold); font-weight: 600; }
+
+  .rule { border: 0; border-top: 1px solid var(--hairline); margin: 36px 0 30px; }
+
+  section { text-align: left; }
+  .step-label {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 14px;
+  }
+  ol { list-style: none; counter-reset: step; }
+  ol li {
+    counter-increment: step;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 13px;
+    line-height: 1.7;
+    color: rgba(244, 239, 228, 0.86);
+    padding-left: 30px;
+    position: relative;
+    margin-bottom: 12px;
+  }
+  ol li::before {
+    content: counter(step);
+    position: absolute;
+    left: 0;
+    top: 1px;
+    width: 19px;
+    height: 19px;
+    border: 1px solid var(--gold);
+    border-radius: 50%;
+    color: var(--gold);
+    font-size: 10.5px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .gap { height: 30px; }
+
+  details {
+    margin-top: 4px;
+    border-top: 1px solid var(--hairline);
+    padding-top: 16px;
+  }
+  summary {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    color: rgba(244, 239, 228, 0.6);
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  details ol { margin-top: 16px; }
+
+  footer {
+    margin-top: 44px;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: rgba(244, 239, 228, 0.4);
+  }
+  footer a { color: var(--gold); text-decoration: none; }
+</style>
+</head>
+<body>
+<main>
+  <h1>The Obama Alarm</h1>
+
+  <div class="stars" aria-hidden="true">
+    <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.2 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>
+    <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.2 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>
+    <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.2 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>
+  </div>
+
+  <div class="player">
+    <button class="play-btn" id="playBtn" aria-label="Preview the alarm">
+      <svg id="iconPlay" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+      <svg id="iconPause" viewBox="0 0 24 24" style="display:none"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
+    </button>
+    <div class="player-meta">
+      <p class="player-label">Preview</p>
+      <div class="track"><div class="track-fill" id="trackFill"></div></div>
+      <p class="time"><span id="timeNow">0:00</span> / 0:29</p>
+    </div>
+  </div>
+  <audio id="audio" src="obama-alarm.mp3" preload="metadata"></audio>
+
+  <a class="download" id="dl" href="obama-alarm.mp3" download="Obama Alarm.mp3">
+    Download the Alarm
+    <small>MP3 · 29 sec · free</small>
+  </a>
+  <p class="dl-hint" id="dlHint">your download should start on its own — if not, tap above.</p>
+
+  <hr class="rule">
+
+  <section>
+    <p class="step-label">iPhone Setup</p>
+    <ol>
+      <li>Tap Download above, then tap Share and pick <strong>"Save to Files."</strong></li>
+      <li>Open the Files app, touch and hold the file → Share → View More → <strong>"Use as Ringtone."</strong></li>
+      <li>Clock app → your alarm → Sound → it's at the top → Save.</li>
+    </ol>
+    <details>
+      <summary>iPhone on iOS 25 or older? Tap here</summary>
+      <ol>
+        <li>Save the file to Files, and get the free GarageBand app.</li>
+        <li>Press and hold the GarageBand icon on your Home Screen → "Create New Audio Recording."</li>
+        <li>Tap the Tracks button (top), then the loop icon (top right) → Files → find your file.</li>
+        <li>Touch and hold it, drag it all the way left onto the track.</li>
+        <li>Tap the triangle (top left) → My Songs. Touch and hold the song → Share → Ringtone → Export.</li>
+        <li>Clock app → your alarm → Sound → pick it → Save.</li>
+      </ol>
+    </details>
+    <div class="gap"></div>
+    <p class="step-label">Android Setup</p>
+    <ol>
+      <li>Tap Download above.</li>
+      <li>Clock app → your alarm → tap the sound → <strong>"Add new"</strong> (Google) or choose from device (Samsung).</li>
+    </ol>
+  </section>
+
+  <footer>a public service announcement from <a href="https://instagram.com/heyberg">@heyberg</a></footer>
+</main>
+
+<script>
+  var audio = document.getElementById('audio');
+  var playBtn = document.getElementById('playBtn');
+  var iconPlay = document.getElementById('iconPlay');
+  var iconPause = document.getElementById('iconPause');
+  var trackFill = document.getElementById('trackFill');
+  var timeNow = document.getElementById('timeNow');
+
+  playBtn.addEventListener('click', function () {
+    if (audio.paused) { audio.play(); } else { audio.pause(); }
+  });
+  audio.addEventListener('play', function () { iconPlay.style.display = 'none'; iconPause.style.display = 'block'; });
+  audio.addEventListener('pause', function () { iconPlay.style.display = 'block'; iconPause.style.display = 'none'; });
+  audio.addEventListener('timeupdate', function () {
+    if (!audio.duration) return;
+    trackFill.style.width = (audio.currentTime / audio.duration * 100) + '%';
+    var s = Math.floor(audio.currentTime);
+    timeNow.textContent = Math.floor(s / 60) + ':' + ('0' + (s % 60)).slice(-2);
+  });
+  audio.addEventListener('ended', function () { trackFill.style.width = '0%'; timeNow.textContent = '0:00'; });
+
+  // iOS (incl. Instagram's in-app browser) blocks downloads that aren't a user gesture,
+  // and tapping the file there opens a preview instead of saving it.
+  var isIOS = /iPhone|iPad|iPod/.test(navigator.userAgent);
+  if (isIOS) {
+    document.getElementById('dlHint').innerHTML = 'on iPhone: tap above, then <strong>Share → Save to Files.</strong>';
+  } else {
+    window.addEventListener('load', function () {
+      setTimeout(function () { document.getElementById('dl').click(); }, 800);
+    });
+  }
+</script>
+</body>
+</html>
